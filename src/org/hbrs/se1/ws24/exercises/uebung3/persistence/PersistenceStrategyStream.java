@@ -1,6 +1,6 @@
 package org.hbrs.se1.ws24.exercises.uebung3.persistence;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.util.List;
 
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
@@ -17,12 +17,15 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
     @Override
     /**
      * Method for saving a list of Member-objects to a disk (HDD)
-     * Look-up in Google for further help! Good source:
-     * https://www.digitalocean.com/community/tutorials/objectoutputstream-java-write-object-file
-     * (Last Access: Oct, 15th 2024)
+     * Look-up in Google for further help!
      */
-    public void save(List<E> member) throws PersistenceException  {
-
+    public void save(List<E> member) throws PersistenceException {
+        try (FileOutputStream fos = new FileOutputStream(location);
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(member);
+        } catch (IOException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.SavingFailed, "Couldn't save Object");
+        }
     }
 
     @Override
@@ -31,7 +34,7 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Some coding examples come for free :-)
      * Take also a look at the import statements above ;-!
      */
-    public List<E> load() throws PersistenceException  {
+    public List<E> load() throws PersistenceException {
         // Some Coding hints ;-)
 
         // ObjectInputStream ois = null;
@@ -52,6 +55,21 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
         // return newListe
 
         // and finally close the streams
-        return null;
+        List<E> newListe;
+        try {
+            FileInputStream fis = new FileInputStream(location);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Object obj = ois.readObject();
+            if (obj instanceof List<?>) {
+                newListe = (List<E>) obj;
+            } else {
+                throw new PersistenceException(PersistenceException.ExceptionType.LoadingFailed, "Loaded object is not a List");
+            }
+            fis.close();
+            ois.close();
+            return newListe;
+        } catch (IOException | ClassNotFoundException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.LoadingFailed, "Couldn't load Object");
+        }
     }
 }
