@@ -4,9 +4,9 @@ public class ContainerException extends Exception {
 	
 	private String modus;
 	private Integer id;
-	
-	public ContainerException( String s ) {
-		super ( s );
+
+	public ContainerException (Integer id) {
+		this.id = id;
 	}
 
 	/**
@@ -15,7 +15,7 @@ public class ContainerException extends Exception {
 	@Override
 	public void printStackTrace() {
 		if (this.id  != null) {
-			System.out.println("Das Person-Objekt mit der ID " + this.id + " ist bereits vorhanden!");
+			System.out.println("Die User Story mit der ID " + this.id + " ist bereits vorhanden!");
 		} else {
 			System.out.println(this.getMessage());
 		}

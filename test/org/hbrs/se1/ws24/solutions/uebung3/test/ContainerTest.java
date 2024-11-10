@@ -71,7 +71,7 @@ class ContainerTest {
             PersistenceStrategyStream<Member> strat = new PersistenceStrategyStream<Member>();
 
             // FileStreams do not like directories, so try this out ;-)
-            strat.setLOCATION("/Users/saschaalda/tmp");
+            strat.setLOCATION("/Users/AnKarl/tmp");
             container.setPersistenceStrategie( strat );
             container.store();
 

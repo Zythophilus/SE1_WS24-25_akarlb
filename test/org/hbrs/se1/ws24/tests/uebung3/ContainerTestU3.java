@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -33,8 +32,8 @@ public class ContainerTestU3  {
     container.setPersistenceStrategy(null);
     PersistenceException store = assertThrows(PersistenceException.class, () -> container.store());
     PersistenceException load = assertThrows(PersistenceException.class, () -> container.load());
-    assertEquals(load.getExceptionTypeType(), PersistenceException.ExceptionType.NoStrategyIsSet);
-    assertEquals(store.getExceptionTypeType(), PersistenceException.ExceptionType.NoStrategyIsSet);
+    assertEquals(load.getExceptionType(), PersistenceException.ExceptionType.NoStrategyIsSet);
+    assertEquals(store.getExceptionType(), PersistenceException.ExceptionType.NoStrategyIsSet);
 
   }
 
@@ -44,8 +43,8 @@ public class ContainerTestU3  {
     PersistenceException store = assertThrows(PersistenceException.class, () -> container.store());
     PersistenceException load = assertThrows(PersistenceException.class, () -> container.load());
 
-    assertEquals(load.getExceptionTypeType(), PersistenceException.ExceptionType.ImplementationNotAvailable);
-    assertEquals(store.getExceptionTypeType(), PersistenceException.ExceptionType.ImplementationNotAvailable);
+    assertEquals(load.getExceptionType(), PersistenceException.ExceptionType.ImplementationNotAvailable);
+    assertEquals(store.getExceptionType(), PersistenceException.ExceptionType.ImplementationNotAvailable);
   }
 
   @Test
@@ -56,8 +55,8 @@ public class ContainerTestU3  {
     PersistenceException store = assertThrows(PersistenceException.class, () -> container.store());
     PersistenceException load = assertThrows(PersistenceException.class, () -> container.load());
 
-    assertEquals(load.getExceptionTypeType(), PersistenceException.ExceptionType.LoadingFailed);
-    assertEquals(store.getExceptionTypeType(), PersistenceException.ExceptionType.SavingFailed);
+    assertEquals(load.getExceptionType(), PersistenceException.ExceptionType.NoStoredListAvailable);
+    assertEquals(store.getExceptionType(), PersistenceException.ExceptionType.SavingFailed);
   }
 
   @Test

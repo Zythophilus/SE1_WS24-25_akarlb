@@ -1,137 +1,32 @@
 package org.hbrs.se1.ws24.exercises.uebung4.prototype;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import org.hbrs.se1.ws24.exercises.uebung2.ConcreteMember;
+import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceException;
+import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceStrategy;
+import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceStrategyStream;
 
-/*
- * Klasse zum Management sowie zur Eingabe unnd Ausgabe von User-Stories.
- * Die Anwendung wird über dies Klasse auch gestartet (main-Methode hier vorhanden)
- *
- * erstellt von Julius P., H-BRS 2024, Version 1.1
- *
- * Strategie für die Wiederverwendung (Reuse):
- * - Anlegen der Klasse UserStory
- * - Anpassen des Generic in der List-Klasse (VORHER: Member, NEU: UserStory)
- * - Anpassen der Methodennamen
- *
- * ToDo: Wie bewerten Sie diese Strategie? Was ist ihre Strategie zur Wiederverwendung? (F1)
- *
- * Entwurfsentscheidung: Die wichtigsten Zuständigkeiten (responsibilities)
- * sind in einer Klasse, d.h. Container?
- * ToDo: Wie bewerten Sie diese Entscheidung? Was wäre ein sinnvolle Aufteilung (F2, F6)
- * 
+import java.util.*;
+
+/**
+ * Klasse zum Management sowie zur Eingabe und Ausgabe von User-Stories.
  */
 
-public class Container {
-	 
+public enum Container {
+
+	INSTANCE;
+
 	// Interne ArrayList zur Abspeicherung der Objekte vom Type UserStory
-	private List<UserStory> liste = null;
-	
-	// Statische Klassen-Variable, um die Referenz
-	// auf das einzige Container-Objekt abzuspeichern
-	// Diese Variante sei thread-safe, so hat Hr. P. es gehört... stimmt das?
-	// Todo: Bewertung Thread-Safeness (F1)
-	// Todo: Bewertung Speicherbedarf (F1)
-	private static Container instance = new Container();
-	
-	// URL der Datei, in der die Objekte gespeichert werden 
+	private List<UserStory> liste;
+
+	private PersistenceStrategy<UserStory> strategy;
+
+
+	// URL der Datei, in der die Objekte gespeichert werden, nicht verwendet da Speicherort in der Strategie gesetzt
 	final static String LOCATION = "allStories.ser";
 
-	/**
-	 * Liefert ein Singleton zurück.
-	 * @return
-	 */
-	public static Container getInstance() {
-		return instance;
-	}
-	
-	/**
-	 * Vorschriftsmäßiges Ueberschreiben des Konstruktors (private) gemaess Singleton-Pattern (oder?)
-	 * Nun auf private gesetzt! Vorher ohne Access Qualifier (--> dann package-private)
-	 */
-	public Container(){
-		liste = new ArrayList<UserStory>();
-	}
-	
-	/**
-	 * Start-Methoden zum Starten des Programms 
-	 * (hier koennen ggf. weitere Initialisierungsarbeiten gemacht werden spaeter)
-	 */
-	public static void main (String[] args) throws Exception {
-		// ToDo: Bewertung Exception-Handling (F3, F7)
-		Container con = Container.getInstance();
-		con.startEingabe(); 
-	}
-	
-	/*
-	 * Diese Methode realisiert eine Eingabe ueber einen Scanner
-	 * Alle Exceptions werden an den aufrufenden Context (hier: main) weitergegeben (throws)
-	 * Das entlastet den Entwickler zur Entwicklungszeit und den Endanwender zur Laufzeit
-	 */
-	public void startEingabe() throws ContainerException, Exception {
-		String strInput = null;
-		
-		// Initialisierung des Eingabe-View
-		// ToDo: Funktionsweise des Scanners erklären (F3)
-		Scanner scanner = new Scanner( System.in );
-
-		while ( true ) {
-			// Ausgabe eines Texts zur Begruessung
-			System.out.println("UserStory-Tool V1.0 by Julius P. (dedicated to all my friends)");
-
-			System.out.print( "> "  );
-			strInput = scanner.nextLine();
-		
-			// Extrahiert ein Array aus der Eingabe
-			String[] strings = strInput.split(" ");
-
-			// 	Falls 'help' eingegeben wurde, werden alle Befehle ausgedruckt
-			if ( strings[0].equals("help") ) {
-				System.out.println("Folgende Befehle stehen zur Verfuegung: help, dump....");
-			}
-			// Auswahl der bisher implementierten Befehle:
-			if ( strings[0].equals("dump") ) {
-				startAusgabe();
-			}
-			// Auswahl der bisher implementierten Befehle:
-			if ( strings[0].equals("enter") ) {
-				// Daten einlesen ... (Ihre Aufgabe!)
-				// this.addUserStory( new UserStory( data ) ) um das Objekt in die Liste einzufügen.
-			}
-								
-			if (  strings[0].equals("store")  ) {
-				// Beispiel-Code zum Anlegen und Speichern einer UserStory:
-				UserStory userStory = new UserStory();
-				userStory.setId( 22 );
-				this.addUserStory( userStory );
-				this.store();
-			}
-		} // Ende der Schleife
-	}
-
-	/**
-	 * Diese Methode realisiert die Ausgabe.
-	 */
-	public void startAusgabe() {
-
-		// Hier möchte Herr P. die Liste mit einem eigenen Sortieralgorithmus sortieren und dann
-		// ausgeben. Allerdings weiss der Student hier nicht weiter!
-
-		// [Sortierung ausgelassen]
-		// Todo: Implementierung Sortierung (F4)
-
-		// Klassische Ausgabe ueber eine For-Each-Schleife
-		for (UserStory story : liste) {
-			System.out.println(story.toString());
-		}
-
-		//  [Variante mit forEach-Methode / Streams (--> Lösung Übung Nr. 2)?
-		//  Gerne auch mit Beachtung der neuen US1
-		//  (Filterung Projekt = "ein Wert (z.B. Coll@HBRS)" und z.B. Prio >=3
-		//  Todo: Implementierung Filterung mit Lambda (F5)
+	Container() {
+		liste = new ArrayList<>();
+		this.strategy = new PersistenceStrategyStream<>();
 	}
 
 	/*
@@ -139,22 +34,9 @@ public class Container {
 	 * inklusive ihrer gespeicherten UserStory-Objekte gespeichert.
 	 * 
 	 */
-	public void store() throws ContainerException {
-		ObjectOutputStream oos = null;
-		FileOutputStream fos = null;
-		try {
-			fos = new FileOutputStream( Container.LOCATION );
-			oos = new ObjectOutputStream(fos);
-			
-			oos.writeObject( this.liste );
-			System.out.println( this.size() + " UserStory wurden erfolgreich gespeichert!");
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		  //  Delegation in den aufrufendem Context
-		  // (Anwendung Pattern "Chain Of Responsibility)
-		  throw new ContainerException("Fehler beim Abspeichern");
-		}
+	public void store() throws PersistenceException {
+		if (strategy == null) throw new PersistenceException(PersistenceException.ExceptionType.NoStrategyIsSet, "Es wurde keine Persistance-Strategy gesetzt");
+		strategy.save(liste);
 	}
 
 	/*
@@ -162,83 +44,71 @@ public class Container {
 	 * inklusive ihrer gespeicherten UserStory-Objekte geladen.
 	 * 
 	 */
-	public void load() {
-		ObjectInputStream ois = null;
-		FileInputStream fis = null;
-		try {
-		  fis = new FileInputStream( Container.LOCATION );
-		  ois = new ObjectInputStream(fis);
-		  
-		  // Auslesen der Liste
-		  Object obj = ois.readObject();
-		  if (obj instanceof List<?>) {
-			  this.liste = (List) obj;
-		  }
-		  System.out.println("Es wurden " + this.size() + " UserStory erfolgreich reingeladen!");
-		}
-		catch (IOException e) {
-			System.out.println("LOG (für Admin): Datei konnte nicht gefunden werden!");
-		}
-		catch (ClassNotFoundException e) {
-			System.out.println("LOG (für Admin): Liste konnte nicht extrahiert werden (ClassNotFound)!");
-		}
-		finally {
-		  if (ois != null) try { ois.close(); } catch (IOException e) {}
-		  if (fis != null) try { fis.close(); } catch (IOException e) {}
+	public void load() throws PersistenceException {
+		if (strategy == null) throw new PersistenceException(PersistenceException.ExceptionType.NoStrategyIsSet, "Es wurde keine Persistance-Strategy gesetzt");
+		clear();
+		liste = strategy.load();
+		UserStory.synchronisiereIDQueue(liste);
+	}
+
+	/* Löschen aller User Stories in der Liste */
+	// 'public' nur aus Testzwecken
+	public void clear() {
+		Iterator<UserStory> iterator = liste.iterator();
+		while (iterator.hasNext()) {
+			UserStory userStory = iterator.next();
+			iterator.remove();
+			ConcreteMember.freeID(userStory.getId());
 		}
 	}
 
-	/**
-	 * Methode zum Hinzufügen eines Mitarbeiters unter Wahrung der Schlüsseleigenschaft
-	 * @param userStory
-	 * @throws ContainerException
-	 */
+	/* Methode zum Hinzufügen einer User Story und Prüfung auf Duplikate */
 	public void addUserStory ( UserStory userStory ) throws ContainerException {
-		if ( contains(userStory) == true ) {
-			ContainerException ex = new ContainerException("ID bereits vorhanden!");
-			throw ex;
+
+		for (UserStory story : liste) {
+			if (userStory.getId().equals(story.getId())) throw new ContainerException(userStory.getId());
 		}
+
 		liste.add(userStory);
 	}
 
-	/**
-	 * Prüft, ob eine UserStory bereits vorhanden ist
-	 * @param userStory
-	 * @return
-	 */
+
+	public boolean deleteUserStory (UserStory userStory) {
+		for (UserStory storyStored : liste) {
+			if(storyStored.getId().equals(userStory.getId())) {
+				liste.remove(storyStored);
+				//UserStory.freeID(storyStored.getId()); macht überhaupt sinn
+				return true;
+			}
+		}
+		return false; // besser exception schreiben UserStoryNotFoundException auch für getUserStory
+	}
+
+	/* Prüft, ob eine UserStory bereits vorhanden ist */
 	private boolean contains( UserStory userStory) {
-		int ID = userStory.getId();
+		/*int ID = userStory.getId();
 		for ( UserStory userStory1 : liste) {
 			if ( userStory1.getId() == ID ) {
 				return true;
 			}
 		}
-		return false;
+		return false;*/
+		return liste.contains(userStory);
+
 	}
 
-	/**
-	 * Ermittlung der Anzahl von internen UserStory
-	 * -Objekten
-	 * @return
-	 */
+	/* Ermittlung der Anzahl von internen User Stories */
 	public int size() {
 		return liste.size();
 	}
 
-	/**
-	 * Methode zur Rückgabe der aktuellen Liste mit Stories
-	 * Findet aktuell keine Anwendung bei Hr. P.
-	 * @return
-	 */
+	/* Methode zur Rückgabe der aktuellen Liste mit Stories */
 	public List<UserStory> getCurrentList() {
-		return this.liste;
+		Collections.sort(liste);
+		return liste;
 	}
 
-	/**
-	 * Liefert eine bestimmte UserStory zurück
-	 * @param id
-	 * @return
-	 */
+	/* Liefert eine bestimmte UserStory zurück */
 	private UserStory getUserStory(int id) {
 		for ( UserStory userStory : liste) {
 			if (id == userStory.getId() ){
@@ -247,4 +117,9 @@ public class Container {
 		}
 		return null;
 	}
+
+	public void setPersistenceStrategy(PersistenceStrategy<UserStory> strategy) {
+		this.strategy = strategy;
+	}
+
 }

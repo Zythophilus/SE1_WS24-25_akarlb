@@ -4,7 +4,7 @@ public class PersistenceException extends Exception {
 
     private ExceptionType exceptionType;
 
-    public ExceptionType getExceptionTypeType() {
+    public ExceptionType getExceptionType() {
         return this.exceptionType;
     }
 
@@ -22,6 +22,6 @@ public class PersistenceException extends Exception {
      * of Type 'ImplementationNotAvailable'. Re-throw the new exception e.g. to a client
      */
     public enum ExceptionType {
-        ImplementationNotAvailable, ConnectionNotAvailable, LoadingFailed, SavingFailed, NoStrategyIsSet
+        ImplementationNotAvailable, ConnectionNotAvailable, LoadingFailed, NoStoredListAvailable, SavingFailed, NoStrategyIsSet
     }
 }

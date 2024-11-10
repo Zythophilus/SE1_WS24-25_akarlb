@@ -28,6 +28,7 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
         }
     }
 
+
     @Override
     /**
      * Method for loading a list of Member-objects from a disk (HDD)
@@ -68,6 +69,8 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             fis.close();
             ois.close();
             return newListe;
+        } catch (FileNotFoundException e) {
+            throw new PersistenceException(PersistenceException.ExceptionType.NoStoredListAvailable, "No List available to load");
         } catch (IOException | ClassNotFoundException e) {
             throw new PersistenceException(PersistenceException.ExceptionType.LoadingFailed, "Couldn't load Object");
         }

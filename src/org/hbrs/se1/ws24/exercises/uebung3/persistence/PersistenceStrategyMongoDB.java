@@ -9,6 +9,7 @@ public class PersistenceStrategyMongoDB<E> implements PersistenceStrategy<E> {
         throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "Not implemented!");
     }
 
+
     @Override
     public List<E> load() throws PersistenceException {
         throw new PersistenceException(PersistenceException.ExceptionType.ImplementationNotAvailable, "Not implemented!");
