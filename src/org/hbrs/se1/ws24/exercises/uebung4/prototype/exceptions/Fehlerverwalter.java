@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws24.exercises.uebung4.prototype;
+package org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions;
 
 import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceException;
 

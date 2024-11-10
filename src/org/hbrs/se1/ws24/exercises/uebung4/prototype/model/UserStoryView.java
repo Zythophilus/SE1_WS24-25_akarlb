@@ -1,4 +1,6 @@
-package org.hbrs.se1.ws24.exercises.uebung4.prototype;
+package org.hbrs.se1.ws24.exercises.uebung4.prototype.model;
+
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.NoMatchingEntryException;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws24.exercises.uebung4.prototype;
+package org.hbrs.se1.ws24.exercises.uebung4.prototype.model;
 
 import java.io.Serializable;
 import java.util.LinkedList;

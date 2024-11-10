@@ -3,9 +3,9 @@ package org.hbrs.se1.ws24.tests.uebung4;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceException;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.Container;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.ContainerException;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.UserStory;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.Container;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.ContainerException;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.UserStory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

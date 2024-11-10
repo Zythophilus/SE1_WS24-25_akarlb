@@ -1,5 +1,7 @@
-package org.hbrs.se1.ws24.exercises.uebung4.prototype;
+package org.hbrs.se1.ws24.exercises.uebung4.prototype.main;
 
+
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.control.Anwendung;
 
 public class Main {
 

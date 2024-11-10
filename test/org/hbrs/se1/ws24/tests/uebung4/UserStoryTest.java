@@ -1,7 +1,7 @@
 package org.hbrs.se1.ws24.tests.uebung4;
 
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.Container;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.UserStory;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.Container;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.UserStory;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
