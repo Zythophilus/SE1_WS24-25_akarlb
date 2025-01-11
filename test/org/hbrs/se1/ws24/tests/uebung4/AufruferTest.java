@@ -4,12 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.hbrs.se1.ws24.exercises.uebung4.prototype.control.Aufrufer;
 import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.UnbekannterBefehlException;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.Container;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 
 public class AufruferTest {
     private Aufrufer aufrufer;
@@ -21,7 +18,7 @@ public class AufruferTest {
 
     @Test
     void testBefehlRegistrierung()  {
-        aufrufer.nehmeBefehlAuf("test", parameter -> {
+        aufrufer.nehmeBefehlAuf("test", (parameter) -> {
         });
 
         assertDoesNotThrow(() -> aufrufer.aufrufen("test", new String[]{}));
@@ -34,12 +31,4 @@ public class AufruferTest {
         );
     }
 
-    @AfterEach
-    void tearDown() {
-        Container.INSTANCE.clear();
-        File f = new File("objects.ser");
-        if (f.exists()) {
-            f.delete();
-        }
-    }
 }

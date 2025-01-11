@@ -1,12 +1,15 @@
 package org.hbrs.se1.ws24.exercises.uebung3.persistence;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
 
     // URL of file, in which the objects are stored
     private String location = "objects.ser";
+
+    private String locationActors = "actors.ser";
 
     // Backdoor method used only for testing purposes, if the location should be changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try this out ;-)!
@@ -27,6 +30,7 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
             throw new PersistenceException(PersistenceException.ExceptionType.SavingFailed, "Couldn't save Object");
         }
     }
+
 
 
     @Override

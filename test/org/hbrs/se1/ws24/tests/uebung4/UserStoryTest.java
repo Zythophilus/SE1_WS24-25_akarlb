@@ -1,6 +1,8 @@
 package org.hbrs.se1.ws24.tests.uebung4;
 
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.PersistenceException;
 import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.Container;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.PersistenceStrategyStream;
 import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.UserStory;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,10 +17,12 @@ public class UserStoryTest {
     private UserStory story;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws PersistenceException {
+        Container.INSTANCE.setPersistenceStrategy(new PersistenceStrategyStream<>());
         Container.INSTANCE.clear();
+
         UserStory.synchronisiereIDQueue(Container.INSTANCE.getCurrentList());
-        story = new UserStory("Test", "Kriterium", "Projekt", (byte) 2, (byte) 4, (byte) 3, (byte) 2);
+        story = new UserStory("Test", "Kriterium", "Projekt", (byte) 2, (byte) 4, (byte) 3, (byte) 2, "Beschreibung");
     }
 
     @Test
@@ -41,12 +45,12 @@ public class UserStoryTest {
 
     @Test
     void testCompareTo() {
-        UserStory story2 = new UserStory("Test2", "test2", "test", (byte) 2, (byte) 4, (byte) 3, (byte) 2);
-        assertTrue(story.compareTo(story2) < 0); // höhere Prio sollte "kleiner" sein
+        UserStory story2 = new UserStory("Test2", "test2", "test", (byte) 2, (byte) 4, (byte) 3, (byte) 2, "Beschreibung");
+        assertTrue(story.compareTo(story2) < 0); // hoehere Prio sollte kleiner sein
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() throws PersistenceException {
         Container.INSTANCE.clear();
         File f = new File("objects.ser");
         if (f.exists()) {

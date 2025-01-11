@@ -1,10 +1,10 @@
 package org.hbrs.se1.ws24.exercises.uebung4.prototype.control;
 
-import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceException;
 import org.hbrs.se1.ws24.exercises.uebung4.prototype.commands.*;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.ContainerException;
-import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.Fehlerverwalter;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions.*;
+import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.Container;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -15,13 +15,11 @@ public enum Anwendung {
     INSTANCE;
 
     private final Aufrufer aufrufer;
-    private  Scanner sc;
-    private Fehlerverwalter fehlerverwalter; // nicht 'final' für aus Testzwecken
+    private Scanner sc; // nicht 'final' aus Testzwecken
     private boolean beendet;
 
     Anwendung() {
         this.aufrufer= new Aufrufer();
-        this.fehlerverwalter = new Fehlerverwalter();
         this.sc = new Scanner(System.in);
         initialisiereBefehle();
         beendet = false;
@@ -31,23 +29,29 @@ public enum Anwendung {
 
     /* Aufnahme der vorhandenen Befehle in die HashMap des Befehls-Aufrufers */
     private void initialisiereBefehle() {
-        aufrufer.nehmeBefehlAuf("enter", new Befehl_Enter(sc));
-        aufrufer.nehmeBefehlAuf("store", new Befehl_Store());
-        aufrufer.nehmeBefehlAuf("load", new Befehl_Load());
-        aufrufer.nehmeBefehlAuf("dump", new Befehl_Dump());
-        aufrufer.nehmeBefehlAuf("help", new Befehl_Help());
-        aufrufer.nehmeBefehlAuf("exit", new Befehl_Exit());
+        aufrufer.nehmeBefehlAuf("analyze", new BefehlAnalyze());
+        aufrufer.nehmeBefehlAuf("enter", new BefehlEnter(sc));
+        aufrufer.nehmeBefehlAuf("store", new BefehlStore());
+        aufrufer.nehmeBefehlAuf("load", new BefehlLoad());
+        aufrufer.nehmeBefehlAuf("dump", new BefehlDump());
+        aufrufer.nehmeBefehlAuf("help", new BefehlHelp());
+        aufrufer.nehmeBefehlAuf("exit", new BefehlExit());
+        aufrufer.nehmeBefehlAuf("actors", new BefehlActors());
+        aufrufer.nehmeBefehlAuf("addElement", new BefehlAddElement(sc));
+        aufrufer.nehmeBefehlAuf("remove", new BefehlRemove());
     }
 
     /* Programmstart */
-    public void starten() {
+    public void starten() throws ContainerException {
         hallo();
+        ladenAufforderung();
+        Container.INSTANCE.initialisiereContainer(); // Initialisierung aus Testzwecken
 
         while (!beendet) {
             try {
                 eingabe();
             } catch (Exception e) {
-                fehlerverwalter.fehlerbehandlung(e);
+                fehlerbehandlung(e);
             }
         }
     }
@@ -64,14 +68,13 @@ public enum Anwendung {
                 "║     \\____/|_____/|_|  |_|\\____/      ║\n" +
                 "║                                      ║\n" +
                 "║    User Story Management Ultimate    ║\n" +
-                "║         [Version 0.1.3]              ║\n" +
+                "║         [Version 0.2.1]              ║\n" +
                 "╚══════════════════════════════════════╝\n");
         System.out.println("Willkommen! Geben Sie 'help' ein für eine Liste der Befehle.");
     }
 
     /* Eingabefunktion für die Nutzereingabe */
-    // 'public' nur für Testzwecke
-    public void eingabe() throws ContainerException, PersistenceException {
+    private void eingabe() throws ContainerException, PersistenceException {
         if (beendet) return;
 
         System.out.print("> ");
@@ -82,7 +85,7 @@ public enum Anwendung {
             return;
         }
 
-        // Zerlegung der Eingabe in seine Teile
+        // Zerlegung der Eingabe in seine Bestandteile
         String[] eingabeTeile = eingabe.split("\\s+", 2);
         String befehlName;
         String[] parameter;
@@ -94,8 +97,7 @@ public enum Anwendung {
             befehlName = eingabeTeile[0]; // s.o.
             parameter = eingabeTeile[1].split("\\s+");
         }
-
-        // Befehlaufrufung
+        // Befehlsaufrufung
         aufrufer.aufrufen(befehlName, parameter);
     }
 
@@ -105,7 +107,7 @@ public enum Anwendung {
         try {
             speichernAufforderung();
         } catch (ContainerException | PersistenceException e) {
-            fehlerverwalter.fehlerbehandlung(e);
+            fehlerbehandlung(e);
         } finally {
             sc.close();
             beendet = true;
@@ -116,14 +118,49 @@ public enum Anwendung {
     /* Mögliche Änderungen vor dem Beenden des Programms zu speichern */
     private void speichernAufforderung() throws ContainerException, PersistenceException {
         System.out.println("Möchten Sie mögliche Änderungen speichern? (j/n)");
+        System.out.print("> ");
         String input = sc.nextLine().trim().toLowerCase();
         if (input.equals("j")) {
             aufrufer.aufrufen("store", null);
         }
     }
 
-    // nur zu Testzwecken
-    public void setScanner(Scanner sc) {
-        this.sc = sc;
+    /* Mögliche Datensätze vor dem Start des Programms zu laden */
+    private void ladenAufforderung()  {
+        System.out.println("Möchten Sie gegebenenfalls vorhandene Datensätze laden? (j/n)");
+        System.out.print("> ");
+        String input = sc.nextLine().trim().toLowerCase();
+        if (input.equals("j")) {
+            try {
+                aufrufer.aufrufen("load", null);
+            } catch (PersistenceException | ContainerException e) {
+                fehlerbehandlung(e);
+            }
+        }
+
+    }
+
+    /*
+    Zentrale Fehlerklasse zur Verwaltung und Behandlung der auftretenden Exceptions
+     */
+    private void fehlerbehandlung(Exception e) {
+        if (e instanceof UnbekannterBefehlException) {
+            System.out.println(e.getMessage());
+        } else if (e instanceof PersistenceException && ((PersistenceException)e).getExceptionType().equals(PersistenceException.ExceptionType.NoStoredListAvailable)) {
+            System.out.println("Es sind noch keine User Stories zum Laden verfügbar.");
+        } else if (e instanceof FalscherParameterException || e instanceof NoMatchingEntryException) {
+            System.out.println(e.getMessage());
+        } else if (e instanceof MaxUndoException || e instanceof MaxRedoException) {
+            System.out.println(e.getMessage());
+        } else if (e instanceof ContainerException) {
+            e.printStackTrace();
+        }
+        else {
+            // debug
+            System.err.println(e.getMessage());
+            System.err.println(e.getCause());
+            System.err.println("Error: " + Arrays.toString(e.getStackTrace()));
+            System.out.println();
+        }
     }
 }

@@ -7,19 +7,27 @@ import org.hbrs.se1.ws24.exercises.uebung4.prototype.model.UserStory;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Befehl_Enter implements Befehl {
+public class BefehlEnter implements Undoable {
 
     private final Scanner sc;
 
 
-    public Befehl_Enter(Scanner scanner) {
+    private UserStory enteredStory;
+
+
+    public BefehlEnter(Scanner scanner) {
         this.sc = scanner;
+    }
+
+    private BefehlEnter(UserStory story) {
+        this.sc = null;
+        this.enteredStory = story;
     }
 
     @Override
     public void ausfuehren(String[] parameter) throws ContainerException {
-        String titel, kriterium, projekt, eingabe;
-        titel = kriterium = projekt = "";
+        String titel, kriterium, projekt, eingabe, beschreibung;
+        titel = kriterium = projekt = beschreibung = "";
         byte aufwand, mehrwert, strafe, risiko, byte_eingabe;
         aufwand = mehrwert = strafe = risiko = 0;
         try {
@@ -31,22 +39,35 @@ public class Befehl_Enter implements Befehl {
                 mehrwert = Byte.parseByte(parameter[5]);
                 strafe = Byte.parseByte(parameter[6]);
                 risiko = Byte.parseByte(parameter[7]);
-                if ((titel.length() < 51 && !titel.isEmpty())
-                        && (kriterium.length() < 71 && !kriterium.isEmpty())
-                        && (projekt.length() < 16 && !projekt.isEmpty())
-                        && !(aufwand < 0 || aufwand > 5)
-                        && !(mehrwert < 0 || mehrwert > 5)
-                        && !(strafe < 0 || strafe > 5)
-                        && !(risiko < 0 || risiko > 5)
+
+                StringBuilder baumeister = new StringBuilder();
+                for (int i = 8; i < parameter.length; i++) {
+                    baumeister.append(parameter[i]);
+                    if (i < parameter.length - 1) {
+                        baumeister.append(" ");
+                    }
+                }
+                beschreibung = baumeister.toString();
+                if ((!titel.isEmpty() && titel.length() < UserStory.MAX_TITEL)
+                        && (!kriterium.isEmpty() && kriterium.length() < UserStory.MAX_KRITERIUM)
+                        && (!projekt.isEmpty() && projekt.length() < UserStory.MAX_PROJEKT)
+                        && !(aufwand < 0 || aufwand > UserStory.MAX_AUFWAND)
+                        && !(mehrwert < 0 || mehrwert > UserStory.MAX_MEHRWERT)
+                        && !(strafe < 0 || strafe > UserStory.MAX_STRAFE)
+                        && !(risiko < 0 || risiko > UserStory.MAX_RISIKO)
                 ) {
-                    UserStory story_neu = new UserStory(titel, kriterium, projekt, aufwand, mehrwert, strafe, risiko);
-                    Container.INSTANCE.addUserStory(story_neu);
+                    enteredStory = new UserStory(titel, kriterium, projekt, aufwand, mehrwert, strafe, risiko, beschreibung);
+                    Container.INSTANCE.addUserStory(enteredStory);
                     System.out.println("User Story erfolgreich angelegt!");
                     return;
                 }
             }
+        } catch (ContainerException e) {
+            e.printStackTrace();
+            return;
         } catch (Exception e) {
                 titel = kriterium = projekt = "";
+                beschreibung = null;
                 aufwand = mehrwert = strafe = risiko = 0;
         }
         System.out.println();
@@ -59,7 +80,7 @@ public class Befehl_Enter implements Befehl {
             eingabe = sc.nextLine().trim();
             if (eingabe.equalsIgnoreCase("exit")) {
                 return;
-            } else if (eingabe.isEmpty() || eingabe.length() > 50) {
+            } else if (eingabe.isEmpty() || eingabe.length() > UserStory.MAX_TITEL) {
                 System.out.println("Mindestens 1 bis maximal 50 Zeichen erlaubt!");
                 System.out.println("['exit' zum Abbrechen]");
             } else {
@@ -72,8 +93,8 @@ public class Befehl_Enter implements Befehl {
             eingabe = sc.nextLine().trim();
             if (eingabe.equalsIgnoreCase("exit")) {
                 return;
-            } else if (eingabe.isEmpty() || eingabe.length() > 70) {
-                System.out.println("Mindestens 1 bis maximal 70 Zeichen erlaubt!");
+            } else if (eingabe.isEmpty() || eingabe.length() > UserStory.MAX_KRITERIUM) {
+                System.out.println("Mindestens 1 bis maximal 100 Zeichen erlaubt!");
                 System.out.println("['exit' zum Abbrechen]");
             } else {
                 kriterium = eingabe;
@@ -85,7 +106,7 @@ public class Befehl_Enter implements Befehl {
             eingabe = sc.nextLine().trim();
             if (eingabe.equalsIgnoreCase("exit")) {
                 return;
-            } else if (eingabe.isEmpty() || eingabe.length() > 15) {
+            } else if (eingabe.isEmpty() || eingabe.length() > UserStory.MAX_PROJEKT) {
                 System.out.println("Mindestens 1 bis maximal 15 Zeichen erlaubt!");
                 System.out.println("['exit' zum Abbrechen]");
             } else {
@@ -98,7 +119,7 @@ public class Befehl_Enter implements Befehl {
             try {
                 eingabe = sc.nextLine().trim();
                 byte_eingabe = Byte.parseByte(eingabe);
-                if (byte_eingabe < 0 || byte_eingabe > 5) {
+                if (byte_eingabe < 0 || byte_eingabe > UserStory.MAX_AUFWAND) {
                     throw new InputMismatchException();
                 } else {
                     aufwand = byte_eingabe;
@@ -115,7 +136,7 @@ public class Befehl_Enter implements Befehl {
             try {
                 eingabe = sc.nextLine().trim();
                 byte_eingabe = Byte.parseByte(eingabe);
-                if (byte_eingabe < 0 || byte_eingabe > 5) {
+                if (byte_eingabe < 0 || byte_eingabe > UserStory.MAX_MEHRWERT) {
                     throw new InputMismatchException();
                 } else {
                     mehrwert = byte_eingabe;
@@ -132,7 +153,7 @@ public class Befehl_Enter implements Befehl {
             try {
                 eingabe = sc.nextLine().trim();
                 byte_eingabe = Byte.parseByte(eingabe);
-                if (byte_eingabe < 0 || byte_eingabe > 5) {
+                if (byte_eingabe < 0 || byte_eingabe > UserStory.MAX_STRAFE) {
                     throw new InputMismatchException();
                 } else {
                     strafe = byte_eingabe;
@@ -149,7 +170,7 @@ public class Befehl_Enter implements Befehl {
             try {
                 eingabe = sc.nextLine().trim();
                 byte_eingabe = Byte.parseByte(eingabe);
-                if (byte_eingabe < 0 || byte_eingabe > 5) {
+                if (byte_eingabe < 0 || byte_eingabe > UserStory.MAX_RISIKO) {
                     throw new InputMismatchException();
                 } else {
                     risiko = byte_eingabe;
@@ -161,8 +182,37 @@ public class Befehl_Enter implements Befehl {
             }
         }
 
-        UserStory story_neu = new UserStory(titel, kriterium, projekt, aufwand, mehrwert, strafe, risiko);
-        Container.INSTANCE.addUserStory(story_neu);
+        System.out.println("Nun beschreiben Sie bitte Ihre User Story:");
+        while (beschreibung == null) {
+            eingabe = sc.nextLine().trim();
+            if (eingabe.equalsIgnoreCase("exit")) {
+                return;
+            } else {
+                beschreibung = eingabe;
+            }
+        }
+
+        enteredStory = new UserStory(titel, kriterium, projekt, aufwand, mehrwert, strafe, risiko, beschreibung);
+        Container.INSTANCE.addUserStory(enteredStory);
         System.out.println("User Story erfolgreich angelegt!");
+    }
+
+    public void undo() {
+        Container.INSTANCE.deleteUserStory(enteredStory);
+
+    }
+
+    @Override
+    public void redo() throws ContainerException {
+        Container.INSTANCE.addUserStory(enteredStory);
+    }
+
+    @Override
+    public Undoable copy() {
+        return new BefehlEnter(enteredStory);
+    }
+
+    public UserStory getEnteredStory() {
+        return enteredStory;
     }
 }

@@ -1,30 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="+uebung 4 prototyp mit tests">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="11b931b2-f8a2-4546-af99-1df1f0f211cc" name="Changes" comment="refactor: uebung 4">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MongoDBStart.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/BoundingBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/BoundingBoxFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/BoundingBoxType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/MyPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/MyPrettyRectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/MyPrettyStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/RectangleBoundingBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/AnalyzeDetailed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/AnalyzeErgebnis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/AnalyzeStandard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/AnalyzeStrategie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlActors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlAddElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlAnalyze.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlDump.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlHelp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlRemove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Undoable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/MaxRedoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/MaxUndoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/PersistenceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/PersistenceStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/PersistenceStrategyMongoDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/PersistenceStrategyStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung10/MyPrettyStackTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_11_2024_16_20_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_11_2024_16_20__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Anwendung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/control/Anwendung.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Aufrufer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/control/Aufrufer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl_Dump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Dump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl_Enter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Enter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl_Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl_Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl_Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Load.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Befehl_Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/ContainerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/ContainerException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/FalscherParameterException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/FalscherParameterException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Fehlerverwalter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/Fehlerverwalter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/NoMatchingEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/NoMatchingEntryException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/UnbekannterBefehlException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/UnbekannterBefehlException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/UserStory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/UserStory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/UserStoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/UserStoryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codesSE2024.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategyMongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategyMongoDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategyStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung3/persistence/PersistenceStrategyStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Dump.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Enter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlEnter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlExit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Help.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/Befehl_Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/commands/BefehlStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/control/Anwendung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/control/Anwendung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/control/Aufrufer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/control/Aufrufer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/ContainerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/ContainerException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/Fehlerverwalter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/UnbekannterBefehlException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/exceptions/UnbekannterBefehlException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/Container.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/UserStory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/UserStory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/UserStoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model/UserStoryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung10/MyPrettyRectangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung10/MyPrettyRectangleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung4/AufruferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung4/AufruferTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung4/BefehlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung4/BefehlTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung4/ContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/org/hbrs/se1/ws24/tests/uebung4/ContainerTest.java" afterDir="false" />
@@ -36,12 +74,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../codesSEws24\exportToHTML" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Exception" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -80,64 +121,91 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Client.executor": "Run",
-    "Application.Container.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.All in codesSE2024.executor": "Run",
-    "JUnit.AnwendungTest.executor": "Run",
-    "JUnit.AnwendungTest.testBefehlAusfuehrung.executor": "Run",
-    "JUnit.AnwendungTest.testEnterBefehl.executor": "Run",
-    "JUnit.AufruferTest.executor": "Run",
-    "JUnit.AufruferTest.testBefehlRegistrierung.executor": "Run",
-    "JUnit.AufruferTest.testUnbekannterBefehl.executor": "Run",
-    "JUnit.BefehlTest.executor": "Run",
-    "JUnit.BefehlTest.testBefehlDump.executor": "Run",
-    "JUnit.BefehlTest.testBefehlEnter.executor": "Run",
-    "JUnit.BefehlTest.testBefehlHelp.executor": "Run",
-    "JUnit.BefehlTest.testBefehlLoad.executor": "Run",
-    "JUnit.BefehlTest.testBefehlStore.executor": "Run",
-    "JUnit.BefehlTest.testExitBefehl.executor": "Run",
-    "JUnit.ContainerTest.executor": "Run",
-    "JUnit.ContainerTest.testDuplicateUserStory.executor": "Run",
-    "JUnit.ContainerTest.testWrongLocationOfFile.executor": "Run",
-    "JUnit.ContainerTestU3.executor": "Run",
-    "JUnit.ContainerTestU3.testWrongFileLocation.executor": "Run",
-    "JUnit.GermanTranslatorTest.executor": "Run",
-    "JUnit.PersistanceTest.executor": "Run",
-    "JUnit.UserStoryTest.executor": "Run",
-    "JUnit.UserStoryTest.testPrioBerechnung.executor": "Run",
-    "JUnit.UserStoryTest.testUserStoryCreation.executor": "Run",
-    "JUnit.org.hbrs.se1.ws24.solutions in codesSE2024.executor": "Run",
-    "JUnit.org.hbrs.se1.ws24.tests in codesSE2024.executor": "Run",
-    "JUnit.org.hbrs.se1.ws24.tests.uebung4 in codesSE2024.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TestNG.GermanTranslatorTest.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/AnKarl/IdeaProjects/codesSEws24/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Container.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.All in codesSE2024.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnwendungTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnwendungTest.testBefehlAusfuehrung.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AnwendungTest.testEnterBefehl.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AufruferTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AufruferTest.testBefehlRegistrierung.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AufruferTest.testUnbekannterBefehl.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testAnalyzeStrategies.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.BefehlTest.testBefehlActors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlAddElement.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlAnalyze.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlDump.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlEnter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlHelp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlLoad.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlRemove.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testBefehlStore.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testExitBefehl.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BefehlTest.testUserStoryView.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTest.testDuplicateUserStory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTest.testIdConsistencyAfterMultipleOperations.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTest.testIdManagementComprehensive.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTest.testIdUniquenessAfterComplexOperations.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTest.testWrongLocationOfFile.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTestU3.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContainerTestU3.testWrongFileLocation.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GermanTranslatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoDBControllerTester.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MongoDBControllerTester.insertAndReadUserStory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.testContains.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.testGetArea.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.testGetBoundingBox.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.testGetCenter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.testGetPerimeter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyRectangleTest.testSameIdentity.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyPrettyStackTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersistanceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersistanceTest.testSaveAndLoad.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersistanceTest.testStrategySwitch.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersistenceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserStoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserStoryTest.testPrioBerechnung.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserStoryTest.testUserStoryCreation.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.org.hbrs.se1.ws24.solutions in codesSE2024.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.org.hbrs.se1.ws24.tests in codesSE2024.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.org.hbrs.se1.ws24.tests.uebung4 in MongoDBStart.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.org.hbrs.se1.ws24.tests.uebung4 in codesSE2024.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.uebung4 in MongoDBStart.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TestNG.GermanTranslatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/AnKarl/IdeaProjects/codesSEws24/src/org/hbrs/se1/ws24/exercises/uebung4/prototype/model&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\AnKarl\IdeaProjects\codesSEws24\src\org\hbrs\se1\ws24\exercises\uebung4\prototype\model" />
       <recent name="$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -145,11 +213,24 @@
       <recent name="C:\Users\AnKarl\IdeaProjects\codesSEws24\src" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="codesSE2024" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="codesSE2024" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -179,7 +260,45 @@
       <workItem from="1731072695630" duration="1253000" />
       <workItem from="1731073971989" duration="10131000" />
       <workItem from="1731167787557" duration="21537000" />
-      <workItem from="1731236037513" duration="16394000" />
+      <workItem from="1731236037513" duration="16576000" />
+      <workItem from="1731267301608" duration="291000" />
+      <workItem from="1731314982723" duration="3233000" />
+      <workItem from="1731353529280" duration="447000" />
+      <workItem from="1731404932757" duration="1560000" />
+      <workItem from="1731421136506" duration="2000" />
+      <workItem from="1731425491727" duration="224000" />
+      <workItem from="1733059140019" duration="178000" />
+      <workItem from="1733059433167" duration="294000" />
+      <workItem from="1733322426675" duration="13000" />
+      <workItem from="1733946678999" duration="5372000" />
+      <workItem from="1734445931204" duration="405000" />
+      <workItem from="1734446723321" duration="155000" />
+      <workItem from="1734467778909" duration="926000" />
+      <workItem from="1734740293955" duration="14000" />
+      <workItem from="1734791601426" duration="19173000" />
+      <workItem from="1734876278622" duration="723000" />
+      <workItem from="1734877861997" duration="713000" />
+      <workItem from="1734878600059" duration="175000" />
+      <workItem from="1734878799034" duration="15468000" />
+      <workItem from="1734903171424" duration="4322000" />
+      <workItem from="1734910950388" duration="1020000" />
+      <workItem from="1734955180201" duration="19990000" />
+      <workItem from="1735129483034" duration="26242000" />
+      <workItem from="1735236060824" duration="4949000" />
+      <workItem from="1735303373744" duration="1266000" />
+      <workItem from="1735304724577" duration="14099000" />
+      <workItem from="1735326972035" duration="14666000" />
+      <workItem from="1735384784629" duration="7000" />
+      <workItem from="1735384838440" duration="6057000" />
+      <workItem from="1735419083614" duration="7365000" />
+      <workItem from="1735426619482" duration="9000" />
+      <workItem from="1735426659141" duration="133000" />
+      <workItem from="1735428698381" duration="3000" />
+      <workItem from="1736346163226" duration="783000" />
+      <workItem from="1736425031724" duration="5756000" />
+      <workItem from="1736505142587" duration="14395000" />
+      <workItem from="1736524717089" duration="1729000" />
+      <workItem from="1736610807783" duration="2655000" />
     </task>
     <task id="LOCAL-00001" summary="init new se1 repo">
       <option name="closed" value="true" />
@@ -197,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731252696433</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor: uebung 4">
+      <option name="closed" value="true" />
+      <created>1731254817191</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731254817191</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +344,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init new se1 repo" />
     <MESSAGE value="+uebung 4 prototyp mit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="+uebung 4 prototyp mit tests" />
+    <MESSAGE value="refactor: uebung 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: uebung 4" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/org/hbrs/se1/ws24/exercises/uebung10/MyPrettyRectangle.java</url>
+          <line>13</line>
+          <properties class="org.hbrs.se1.ws24.exercises.uebung10.MyPrettyRectangle" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

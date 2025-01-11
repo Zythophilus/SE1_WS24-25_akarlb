@@ -1,5 +1,6 @@
 package org.hbrs.se1.ws24.exercises.uebung3.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -11,5 +12,7 @@ import java.util.List;
  */
 public interface PersistenceStrategy<E> {
     public void save(List<E> member) throws PersistenceException;
+
     public List<E> load() throws PersistenceException;
+
 }

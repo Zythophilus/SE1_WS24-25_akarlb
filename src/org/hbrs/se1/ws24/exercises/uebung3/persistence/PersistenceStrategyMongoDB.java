@@ -1,5 +1,6 @@
 package org.hbrs.se1.ws24.exercises.uebung3.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class PersistenceStrategyMongoDB<E> implements PersistenceStrategy<E> {

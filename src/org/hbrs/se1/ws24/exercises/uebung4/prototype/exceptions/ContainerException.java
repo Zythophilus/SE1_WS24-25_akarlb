@@ -1,12 +1,16 @@
 package org.hbrs.se1.ws24.exercises.uebung4.prototype.exceptions;
 
 public class ContainerException extends Exception {
-	
-	private String modus;
+
 	private Integer id;
+	private String akteur;
 
 	public ContainerException (Integer id) {
 		this.id = id;
+	}
+
+	public ContainerException (String akteur) {
+		this.akteur = akteur;
 	}
 
 	/**
@@ -15,15 +19,12 @@ public class ContainerException extends Exception {
 	@Override
 	public void printStackTrace() {
 		if (this.id  != null) {
-			System.out.println("Die User Story mit der ID " + this.id + " ist bereits vorhanden!");
-		} else {
+			System.out.println("Die User Story ist bereits vorhanden!");
+		} else if (this.akteur != null) {
+			System.out.println("Der Akteur '" + this.akteur + "' ist bereits bekannt!");
+		}
+		else {
 			System.out.println(this.getMessage());
 		}
-	} 
-
-	public void addID(Integer id) {
-		this.id = id;
 	}
-
-
 }
